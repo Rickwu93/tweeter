@@ -11,17 +11,17 @@
 
 .tweet-header {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   margin: 1% 3%;
 }
 
-.img-name {
-  display: flex;
-  margin-right: 5%;
+.user-handle {
+  margin-left: auto;
 }
 
-.img-name img {
-  margin-right: 15%;
+
+.avatar {
+  margin-right: 15px;
 }
 
 
@@ -51,9 +51,8 @@ hr {
   width: 100px;
 }
 
-.fa-flag {
-  color: #4056a1;
-  transition: 0.5s;
+.fa-retweet:hover {
+  color:green;
 }
 
 .fa-retweet {
@@ -61,12 +60,13 @@ hr {
   transition: 0.5s;
 }
 
-.fa-flag:hover {
-  color:orange
+.fa-flag {
+  color: #4056a1;
+  transition: 0.5s;
 }
 
-.fa-retweet:hover {
-  color:green;
+.fa-flag:hover {
+  color:orange
 }
 
 .fa-heart {
