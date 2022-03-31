@@ -51,15 +51,25 @@ const loadTweets = () => {
   })
 };
 
+
 $("#tweet-form").submit(function(event) {  
   event.preventDefault(); 
+
+  if ($('#tweet-text').val() === "" ||
+  $(".tweet-text").val() === null) {
+    alert("Tweet is empty!")
+    return;
+  } else if ($('#tweet-text').val().length > 140) {
+    alert("Tweet length is exceeded!")
+    return;
+  }
+
 const data = $(this).serialize()
    $.ajax('/tweets', {
      method: 'POST',
     data: data
   })
 })
-
 
 loadTweets();
 })
