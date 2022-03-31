@@ -6,14 +6,12 @@
 
 // Fake data taken from initial-tweets.json
 $(document).ready(function () {
-
-  //cross-site scripting protection
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
+	//cross-site scripting protection
+	const escape = function (str) {
+		let div = document.createElement('div');
+		div.appendChild(document.createTextNode(str));
+		return div.innerHTML;
+	};
 
 	const createTweetElement = function (tweetObj) {
 		// console.log(tweetObj.user.name)
@@ -45,8 +43,8 @@ $(document).ready(function () {
 		// loops through tweets
 		// calls createTweetElement for each tweet
 		// takes return value and appends it to the tweets container
-    const container = $('.tweet-container')
-    container.empty();
+		const container = $('.tweet-container');
+		container.empty();
 		for (const tweetData of tweets) {
 			const $tweet = createTweetElement(tweetData);
 			container.prepend($tweet);
@@ -65,22 +63,20 @@ $(document).ready(function () {
 		event.preventDefault();
 
 		if ($('#tweet-text').val() === '' || $('#tweet-text').val() === null) {
-			alert('Tweet is empty!');
-			return;
-		} else if ($('#tweet-text').val().length > 140) {
-			alert('Tweet length is exceeded!');
-			return;
+			return $('.errors').text('Please enter a valid tweet.').slideDown();
+		}
+		if ($('#tweet-text').val().length > 140) {
+			return $('.errors')
+				.text('Your tweet exceeds the character limits')
+				.slideDown();
 		}
 
 		const data = $(this).serialize();
-    $.post('/tweets', data)
-        .then(() => {
-          loadTweets();
-        })
-		// $.ajax('/tweets', {
-		// 	method: 'POST',
-		// 	data: data,
-		// });
+		$.post('/tweets', data).then(() => {
+			loadTweets();
+			$('#tweet-text').val('');
+			$('#tweet-text').parent().find('.counter').text(140);
+		});
 	});
 
 	loadTweets();

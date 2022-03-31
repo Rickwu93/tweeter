@@ -5,10 +5,6 @@ main .new-tweet {
   margin-bottom: 10%;
 }
 
-/* main h2 {
-  display: flex;
-} */
-
 
 main button {
   background-color: #4056a1;
@@ -36,3 +32,9 @@ font-family: 'Bungee', sans-serif;
 font-weight: bold;
 }
 
+.errors {
+  display: flex;
+  text-align: center;
+  color: red;
+  font-weight: 400;
+}
