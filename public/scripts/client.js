@@ -6,6 +6,15 @@
 
 // Fake data taken from initial-tweets.json
 $(document).ready(function () {
+
+  //cross-site scripting protection
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+
 	const createTweetElement = function (tweetObj) {
 		// console.log(tweetObj.user.name)
 		let $tweet = $(`
@@ -17,7 +26,7 @@ $(document).ready(function () {
 					
 					<h3 class="user-handle">${tweetObj.user.handle}</h3>
 				</header>
-				<section class="tweet-text">${tweetObj.content.text}</section>
+				<section class="tweet-text">${escape(tweetObj.content.text)}</section>
 				<hr />
 				<footer class="tweet-footer">
 					<p>${timeago.format(tweetObj.created_at)} </p>
@@ -38,7 +47,7 @@ $(document).ready(function () {
 		// takes return value and appends it to the tweets container
     const container = $('.tweet-container')
     container.empty();
-		for (let tweetData of tweets) {
+		for (const tweetData of tweets) {
 			const $tweet = createTweetElement(tweetData);
 			container.prepend($tweet);
 		}
