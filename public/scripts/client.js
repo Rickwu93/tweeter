@@ -5,12 +5,10 @@
  */
 
 // Fake data taken from initial-tweets.json
-$(document).ready(function() {
-  
-
-const createTweetElement = function (tweetObj) {
-  // console.log(tweetObj.user.name)
-	let $tweet = $(`
+$(document).ready(function () {
+	const createTweetElement = function (tweetObj) {
+		// console.log(tweetObj.user.name)
+		let $tweet = $(`
   <article class="tweet">
 				<header class="tweet-header">
 					
@@ -31,46 +29,50 @@ const createTweetElement = function (tweetObj) {
 				</footer>
       <article>
       `);
-	return $tweet;
-};
+		return $tweet;
+	};
 
-const renderTweets = function (tweets) {
-	// loops through tweets
-	// calls createTweetElement for each tweet
-	// takes return value and appends it to the tweets container
-	for (let tweetData of tweets) {
-		const $tweet = createTweetElement(tweetData);
-		$('.tweet-container').prepend($tweet);
-	}
-};
+	const renderTweets = function (tweets) {
+		// loops through tweets
+		// calls createTweetElement for each tweet
+		// takes return value and appends it to the tweets container
+    const container = $('.tweet-container')
+    container.empty();
+		for (let tweetData of tweets) {
+			const $tweet = createTweetElement(tweetData);
+			container.prepend($tweet);
+		}
+	};
 
-const loadTweets = () => {
-  $.ajax('http://localhost:8080/tweets', { method: "GET"})
-  .then(function (data) {
-    renderTweets(data);
-  })
-};
+	const loadTweets = () => {
+		$.ajax('http://localhost:8080/tweets', { method: 'GET' }).then(function (
+			data
+		) {
+			renderTweets(data);
+		});
+	};
 
+	$('#tweet-form').submit(function (event) {
+		event.preventDefault();
 
-$("#tweet-form").submit(function(event) {  
-  event.preventDefault(); 
+		if ($('#tweet-text').val() === '' || $('#tweet-text').val() === null) {
+			alert('Tweet is empty!');
+			return;
+		} else if ($('#tweet-text').val().length > 140) {
+			alert('Tweet length is exceeded!');
+			return;
+		}
 
-  if ($('#tweet-text').val() === "" ||
-  $(".tweet-text").val() === null) {
-    alert("Tweet is empty!")
-    return;
-  } else if ($('#tweet-text').val().length > 140) {
-    alert("Tweet length is exceeded!")
-    return;
-  }
+		const data = $(this).serialize();
+    $.post('/tweets', data)
+        .then(() => {
+          loadTweets();
+        })
+		// $.ajax('/tweets', {
+		// 	method: 'POST',
+		// 	data: data,
+		// });
+	});
 
-const data = $(this).serialize()
-   $.ajax('/tweets', {
-     method: 'POST',
-    data: data
-  })
-})
-
-loadTweets();
-})
-
+	loadTweets();
+});
