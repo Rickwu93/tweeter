@@ -67,7 +67,7 @@ $(document).ready(function () {
 		}
 		if ($('#tweet-text').val().length > 140) {
 			return $('.errors')
-				.text('Your tweet exceeds the character limits')
+				.text('Your tweet exceeds the character limit of 140 characters.')
 				.slideDown();
 		}
 

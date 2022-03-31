@@ -33,8 +33,27 @@ font-weight: bold;
 }
 
 .errors {
-  display: flex;
+  background: hsl(0, 83%, 42%) !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: relative; 
+  display: none;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin: 0.5em;
+  color: white;
   text-align: center;
-  color: red;
-  font-weight: 400;
+}
+
+.errors::after { 
+  content: "\f071";
+  font-family:'FontAwesome';
+  color:white;
+  margin: 10px;
+}
+
+.errors::before { 
+  content: "\f071";
+  font-family:'FontAwesome';
+  color:white;
+  margin: 10px;
 }
