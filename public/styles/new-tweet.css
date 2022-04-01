@@ -32,7 +32,7 @@ font-family: 'Bungee', sans-serif;
 font-weight: bold;
 }
 
-.errors {
+.error-message {
   background: hsl(0, 83%, 42%) !important;
   padding: 10px !important;
   border-radius: 0 !important;
@@ -44,14 +44,14 @@ font-weight: bold;
   text-align: center;
 }
 
-.errors::after { 
+.error-message::after { 
   content: "\f071";
   font-family:'FontAwesome';
   color:white;
   margin: 10px;
 }
 
-.errors::before { 
+.error-message::before { 
   content: "\f071";
   font-family:'FontAwesome';
   color:white;

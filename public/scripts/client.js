@@ -12,7 +12,7 @@ $(document).ready(function () {
 		div.appendChild(document.createTextNode(str));
 		return div.innerHTML;
 	};
-
+	//body of the tweet object
 	const createTweetElement = function (tweetObj) {
 		// console.log(tweetObj.user.name)
 		let $tweet = $(`
@@ -38,13 +38,13 @@ $(document).ready(function () {
       `);
 		return $tweet;
 	};
-
+	//renders the tweet data
 	const renderTweets = function (tweets) {
 		// loops through tweets
 		// calls createTweetElement for each tweet
 		// takes return value and appends it to the tweets container
 		const container = $('.tweet-container');
-		container.empty();
+		container.empty(); //empty jquery string
 		for (const tweetData of tweets) {
 			const $tweet = createTweetElement(tweetData);
 			container.prepend($tweet);
@@ -61,12 +61,14 @@ $(document).ready(function () {
 
 	$('#tweet-form').submit(function (event) {
 		event.preventDefault();
-
+		//returns error message to user if tweeter fields are empty or exceeds 140 characters
 		if ($('#tweet-text').val() === '' || $('#tweet-text').val() === null) {
-			return $('.errors').text('Please enter a valid tweet.').slideDown();
+			return $('.error-message')
+				.text('Please enter a valid tweet.')
+				.slideDown();
 		}
 		if ($('#tweet-text').val().length > 140) {
-			return $('.errors')
+			return $('.error-message')
 				.text('Your tweet exceeds the character limit of 140 characters.')
 				.slideDown();
 		}

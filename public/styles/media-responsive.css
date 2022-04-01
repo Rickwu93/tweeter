@@ -1,0 +1,20 @@
+@media only screen and (max-width: 1024px) {
+	nav {
+		background-color: #d79c2a;
+	}
+	body {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+}
+/*mobile first*/
+@media only screen and (min-width: 1024px) {
+	.user-header-container {
+		display: flex;
+		gap: 9rem;
+		margin: 3rem;
+	}
+	.container {
+		flex-basis: 150%;
+	}
+}
