@@ -15,6 +15,7 @@ $(document).ready(function () {
 	//body of the tweet object
 	const createTweetElement = function (tweetObj) {
 		// console.log(tweetObj.user.name)
+		console.log(tweetObj.created_at);
 		let $tweet = $(`
   <article class="tweet">
 				<header class="tweet-header">
@@ -61,25 +62,26 @@ $(document).ready(function () {
 
 	$('#tweet-form').submit(function (event) {
 		event.preventDefault();
+
 		//returns error message to user if tweeter fields are empty or exceeds 140 characters
 		if ($('#tweet-text').val() === '' || $('#tweet-text').val() === null) {
 			return $('.error-message')
 				.text('Please enter a valid tweet.')
 				.slideDown();
-		}
-		if ($('#tweet-text').val().length > 140) {
+		} else if ($('#tweet-text').val().length > 140) {
 			return $('.error-message')
 				.text('Your tweet exceeds the character limit of 140 characters.')
 				.slideDown();
+		} else {
+			$('.error-message').slideUp();
+			const data = $(this).serialize();
+			$.post('/tweets', data).then(() => {
+				loadTweets();
+				$('#tweet-text').val('');
+				$('#tweet-text').parent().find('.counter').text(140);
+				$('#tweet-text').parent().find('.counter').css({ color: '#545149' }); //resets 0 back to black to 140
+			});
 		}
-
-		const data = $(this).serialize();
-		$.post('/tweets', data).then(() => {
-			loadTweets();
-			$('#tweet-text').val('');
-			$('#tweet-text').parent().find('.counter').text(140);
-		});
 	});
-
 	loadTweets();
 });

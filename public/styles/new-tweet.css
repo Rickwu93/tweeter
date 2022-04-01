@@ -1,59 +1,59 @@
 main .new-tweet {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 10%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-bottom: 10%;
 }
 
-
 main button {
-  background-color: #4056a1;
-  color: white;
-  font-weight: bold;
-  font-family: 'Bungee', sans-serif;
+	background-color: #4056a1;
+	color: white;
+	font-weight: bold;
+	font-family: 'Bungee', sans-serif;
 }
 
 main textarea {
-  background-color: #f4f1ec;
-  border-width: 0;
-  border-bottom-width: 8px;
-  margin-bottom: 15px;
+	background-color: #f4f1ec;
+	border-width: 0;
+	border-bottom-width: 8px;
+	margin-bottom: 15px;
 }
 
 main form {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .counter {
-float: right;
-font-weight: 300;
-font-family: 'Bungee', sans-serif;
-font-weight: bold;
+	float: right;
+	font-weight: 300;
+	font-family: 'Bungee', sans-serif;
+	font-weight: bold;
 }
 
 .error-message {
-  background: hsl(0, 83%, 42%) !important;
-  padding: 10px !important;
-  border-radius: 0 !important;
-  position: relative; 
-  display: none;
-  box-shadow: 1px 1px 1px #aaaaaa;
-  margin: 0.5em;
-  color: white;
-  text-align: center;
+	z-index: 1;
+	background: hsl(0, 83%, 42%) !important;
+	padding: 10px !important;
+	border-radius: 0 !important;
+	position: relative;
+	display: none;
+	box-shadow: 1px 1px 1px #aaaaaa;
+	margin: 0.5em;
+	color: white;
+	text-align: center;
 }
 
-.error-message::after { 
-  content: "\f071";
-  font-family:'FontAwesome';
-  color:white;
-  margin: 10px;
+.error-message::after {
+	content: '\f071';
+	font-family: 'FontAwesome';
+	color: white;
+	margin: 10px;
 }
 
-.error-message::before { 
-  content: "\f071";
-  font-family:'FontAwesome';
-  color:white;
-  margin: 10px;
+.error-message::before {
+	content: '\f071';
+	font-family: 'FontAwesome';
+	color: white;
+	margin: 10px;
 }
