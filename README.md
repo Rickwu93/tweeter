@@ -6,8 +6,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Sample Screenshots
 
-!["screenshot description"](#)
-!["screenshot description"](#)
+!["Front end of the website"](https://github.com/Rickwu93/tweeter/blob/master/docs/tweeter1.png?raw=true)
+!["Mobile format"](https://github.com/Rickwu93/tweeter/blob/master/docs/tweeter2.png?raw=true)
+!["Side site test"](https://github.com/Rickwu93/tweeter/blob/master/docs/tweeter3.png?raw=true)
+
+
 
 ## Getting Started
 
